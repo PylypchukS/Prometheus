@@ -1,0 +1,35 @@
+package com.jcourse.week2.task2;
+
+public class MatrixPrint {
+
+	public static void main(String[] args) {
+		int a = 0;
+		
+		for(int b = 1; b <= 25; b++) {
+			
+			if (b == 1 || b == 5 || b == 7 || b == 9 || b == 13 || b == 17 || b == 19 ||  b == 21) {
+				System.out.print(" * ");
+				a++;
+			}
+			
+			else if (b == 25) {
+				System.out.print(" * ");
+			}
+			 
+			else if (b < 10) {
+				
+				 System.out.print(" " + b + " ");
+				 a++;
+			}
+			
+			else if (b >= 10) {
+				System.out.print(b + " ");
+				 a++;
+			}
+			
+			if(a%5 == 0) {
+				System.out.println();
+			}
+		}
+	}
+}
