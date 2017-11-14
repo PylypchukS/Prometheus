@@ -1,0 +1,33 @@
+package com.jcourse.week6.task1;
+
+public class Application {
+	
+	public static String decode(String text) {
+	    String encodedString = "";
+	   
+	    if (text == null) {
+	    	return "";
+	    }
+
+	    for (int i = 0, count = 1; i < text.length(); i++) {
+	        if (i + 1 < text.length() && text.charAt(i) == text.charAt(i + 1))
+	            count++;
+	        
+	       
+	        else {
+	            encodedString = encodedString.concat(Character.toString(text.charAt(i))
+	            		.concat(Integer.toString(count))
+	                    );
+	         count = 1;
+	        }
+	    }
+	    return encodedString;
+	    
+	}
+
+public static void main(String[] args) {
+    String example = "SssSSKkkkyyyyy";
+    System.out.println(decode(example));
+ 
+  }
+}
