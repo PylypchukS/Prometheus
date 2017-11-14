@@ -1,0 +1,29 @@
+package com.jcourse.week2.task5;
+
+public class BinarySearch {
+
+	public static void main(String[] args) {
+		int data[] = { 11, 19, 70, 100, 314, 561, 670 };
+		int numberToFind = 670;
+	
+		int i = 0;
+		int a = data.length-1;
+		int b = a/2;
+		while ((data[b]) != numberToFind & i < a) {
+			if(numberToFind > data[b]) {
+				i = b+1;
+				b =(i+a)/2;
+			}
+			else {
+			a = b-1;
+			b =((i+a)/2);
+			}
+		}
+			if(data[b] == numberToFind){
+				System.out.println(b);
+		}
+			else{
+		System.out.println(-1);
+		}
+	}
+}
