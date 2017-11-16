@@ -1,0 +1,123 @@
+package com.jcourse.week2.additional_task;
+
+public class BinaryTree {
+
+	Node root;
+
+	public void addNode(int key, String name) {
+
+		Node newNode = new Node(key, name); // створення нового вузла, ініціалізація
+
+		if (root == null) { // якщо досі це не було коренем,
+
+			root = newNode; // то тепер стане ним
+
+		} else {
+
+			Node focusNode = root; // корінь стає вузлом, щоб можна було рухатися по дереву
+
+			Node parent; 
+
+			while (true) {
+
+				parent = focusNode; // початок руху з кореня
+
+				if (key < focusNode.key) { // перевіряємо, чи новий вузол менший за вершину
+
+					focusNode = focusNode.leftChild; // якщо так, рухаємося ліворуч
+
+					if (focusNode == null) { // якщо ліве піддерево не має "дітей"
+
+					parent.leftChild = newNode; // робимо новий вузол "дитиною"
+						return; 
+
+					}
+
+				} else { // в інакшому випадку рухаємося праворуч
+
+					focusNode = focusNode.rightChild;
+
+					if (focusNode == null) { // якщо праве піддерево не має "дітей"
+
+						parent.rightChild = newNode; // робимо новий вузол "дитиною"
+						return; 
+
+					}
+
+				}
+
+			}
+		}
+
+	}
+	
+	public Node findNode(int key) {
+
+		Node focusNode = root; // починаємо рух з вершини дерева
+
+		while (focusNode.key != key) { // поки не знайдено потрібний елемент, не зупиняємося 
+
+			if (key < focusNode.key) { // якщо потрібно шукати ліворуч
+
+				focusNode = focusNode.leftChild; // шукаємо ліворуч
+
+			} else { // в інакшому випадку
+
+				focusNode = focusNode.rightChild; // шукаємо праворуч
+
+			}
+
+			if (focusNode == null) // якщо шуканий елемент не знайдено
+				return null;
+
+		}
+
+		return focusNode;
+
+	}
+	public static void main(String[] args) {
+
+		BinaryTree theTree = new BinaryTree();
+
+		theTree.addNode(50, "Бабуся");
+
+		theTree.addNode(25, "Мама");
+
+		theTree.addNode(15, "Я");
+
+		theTree.addNode(30, "Сестра");
+
+		theTree.addNode(75, "Тітка");
+
+		theTree.addNode(85, "Двоюрідний брат");
+
+		System.out.println(theTree.findNode(15));
+	}
+}
+
+
+
+
+package com.jcourse.week2.additional_task;
+
+class Node { // вузол, новий елемент дерева
+
+	int key;
+	String name;
+
+	Node leftChild;
+	Node rightChild;
+
+	Node(int key, String name) {
+
+		this.key = key;
+		this.name = name;
+
+	}
+
+	public String toString() {
+
+		return name + " під номером " + key;
+
+	}
+}
